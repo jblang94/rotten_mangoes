@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       # Automatically log in the newly created user
       session[:user_id] = @user.id
-      redirect_to movies_path
+      redirect_to movies_path, notice: "Welcome #{@user.firstname}!"
     else
       render :new
     end
