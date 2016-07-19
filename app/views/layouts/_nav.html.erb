@@ -11,6 +11,11 @@
                                                 method: :delete, 
                                                 class: "btn navbar-btn navbar-right btn-warning", 
                                                 role: "button" %>
+        <% if current_user.is_admin %>
+          <%= link_to "View All Users", admin_users_path, 
+                                                  class: "btn navbar-btn navbar-right btn-warning", 
+                                                  role:"button" %>
+        <% end %>
       <% else %>
         <%= link_to "Login", new_session_path, class: "btn navbar-btn navbar-right btn-warning" %>
         <%= link_to "Sign Up", new_user_path, class: "btn navbar-btn navbar-right btn-warning" %>

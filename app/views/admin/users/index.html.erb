@@ -1,0 +1,27 @@
+<h1>List of All Users</h1>
+<table class="table">
+  <thead class="text-center">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Administrator<th>
+      <th>Number of Reviews</th>
+    </tr>
+  </thead>
+  <tbody class="text-center">
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td>
+          <%= (user.is_admin) ? "Yes" : "No" %>
+        </td>
+        <td>
+          <%= (user.reviews.size) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
