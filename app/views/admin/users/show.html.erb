@@ -1,0 +1,12 @@
+<h1>User Details</h1>
+<p>Full Name: <%= @user.fullname %></p>
+<p>Email: <%= @user.email %></p>
+<p>Number of Reviews: <%= @user.reviews.size %></p>
+<p>
+  Movies Reviewed
+  <ul>
+    <% @user.reviews.pluck(:movie_id).uniq.each do |movie_id| %>
+      <li><%= Movie.find(movie_id).title %></li>
+    <% end %>
+  </ul>
+</p>
