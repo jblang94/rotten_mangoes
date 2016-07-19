@@ -1,12 +1,8 @@
-<h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
-<hr>
 <div class="container">
   <div class="row text-center">
   <% @movies.each do |movie| %>
     <div class="column">
-      <!--<%= link_to image_tag(movie.poster_image_url), movie_path(movie) %> -->
-      <a href="<%= movie_path(movie) %>"><img class= "img-thumbnail" src="<%= movie.poster_image_url %>" alt="<%= movie.title %>"></a>
+      <%= link_to image_tag(movie.poster_image_url), movie_path(movie), class: "img-thumbnail" %>
       <h2><%= link_to movie.title, movie_path(movie) %></h2>
       <h2>Average Review: <%= movie.review_average %>/10</h2>
       <h3><%= formatted_date(movie.release_date) %></h3>

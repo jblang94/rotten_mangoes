@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <strong><a class="navbar-brand" href="<%= movies_path %>">Rotten Mangoes</a></strong>
+      <% if current_user %>
+        <p class="navbar-text"><%= current_user.fullname %></p>
+        <%= link_to "Submit a movie!", new_movie_path, 
+                                                class: "btn navbar-btn navbar-right btn-warning", 
+                                                role:"button" %>
+        <%= link_to "Log Out", session_path("current"), 
+                                                method: :delete, 
+                                                class: "btn navbar-btn navbar-right btn-warning", 
+                                                role: "button" %>
+      <% else %>
+        <%= link_to "Log In", new_session_path, class: "btn navbar-btn navbar-right btn-warning" %>
+        <%= link_to "Sign Up", new_user_path, class: "btn navbar-btn navbar-right btn-warning" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
