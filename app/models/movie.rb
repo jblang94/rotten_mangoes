@@ -1,15 +1,16 @@
 class Movie < ApplicationRecord
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :title, presence: true
   validates :director, presence: true
   validates :runtime_in_minutes, numericality: { only_integer: true }
   validates :description, presence: true
-  validates :poster_image_url, presence: true
   validates :release_date, presence: true
 
   validate :release_date_is_in_the_past
+
+  mount_uploader :poster, PosterUploader
 
   def review_average
     return 0 if reviews.size == 0
