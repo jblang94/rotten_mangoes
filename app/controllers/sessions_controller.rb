@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id 
+      session[:user_id] = user.id
+      session[:admin_id] = user.id if user.is_admin 
       redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
     else
       flash.now[:alert] = "Login failed..."
@@ -15,7 +16,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session.delete(:user_id)
+    session.delete(:admin_id)
     redirect_to movies_path, notice: "Logged Out!"
   end
   
