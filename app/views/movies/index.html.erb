@@ -1,15 +1,28 @@
 <div class="container">
-  <div class="row text-center">
-  <% @movies.each do |movie| %>
+  <div class="row">
     <div class="column">
-      <%= link_to image_tag(movie.poster.large.url), movie_path(movie) %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <h2>Average Review: <%= movie.review_average %>/10</h2>
-      <h3><%= formatted_date(movie.release_date) %></h3>
-      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-      <p><%= movie.description %></p>
-      <hr>
+      <%= form_tag movies_path, method: "get" do %>
+        <%= label_tag :title_search, "Search by title:" %>
+        <%= text_field_tag :title_search, params[:title_search] %>
+        <br>
+        <%= label_tag :director_search, "Search by director:" %>
+        <%= text_field_tag :director_search, params[:director_search] %>
+        <br>
+        <%= submit_tag "Search", name: nil %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <div class="row text-center">
+    <% @movies.each do |movie| %>
+      <div class="column">
+        <%= link_to image_tag(movie.poster.large.url), movie_path(movie) %>
+        <h2><%= link_to movie.title, movie_path(movie) %></h2>
+        <h2>Average Review: <%= movie.review_average %>/10</h2>
+        <h3><%= formatted_date(movie.release_date) %></h3>
+        <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+        <p><%= movie.description %></p>
+        <hr>
+      </div>
+    <% end %>
   </div>
 </div>

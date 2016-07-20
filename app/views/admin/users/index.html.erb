@@ -1,11 +1,12 @@
-<h1>List of All Users</h1>
+<div class="container">
+  <h1>List of All Users</h1>
+  <%= paginate @users %>
 
-<%= paginate @users %>
-<% @users.each do |user| %>
-  <div>
-    <%= user.fullname %>
-    <%= user.email %>
-    <%= link_to "View Details", admin_user_path(user) %>
-  </div>
-  
-<% end %>
+  <% @users.each do |user| %>
+    <div class="row">
+      <h2><%= user.fullname %></h2>
+      <p><%= user.email %></p>
+      <%= link_to "View Details", admin_user_path(user) %>
+    </div>
+  <% end %>
+</div>
