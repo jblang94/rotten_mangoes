@@ -31,8 +31,13 @@ class PosterUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+
   # Create different versions of your uploaded files:
   version :large do
+    process :resize_to_fit => [700, 700]
+  end
+
+  version :main_page do
     process :resize_to_fit => [500, 500]
   end
 
