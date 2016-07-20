@@ -13,16 +13,6 @@
   </div>
   <hr>
   <div class="row text-center">
-    <% @movies.each do |movie| %>
-      <div class="col-md-6">
-        <%= link_to image_tag(movie.poster.large.url), movie_path(movie) %>
-        <h2><%= link_to movie.title, movie_path(movie) %></h2>
-        <h2>Average Review: <%= movie.review_average %>/10</h2>
-        <h3><%= formatted_date(movie.release_date) %></h3>
-        <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-        <p><%= movie.description %></p>
-        <hr>
-      </div>
-    <% end %>
+    <%= render partial: "movie", collection: @movies %>
   </div>
 </div>
