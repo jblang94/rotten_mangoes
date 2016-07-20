@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def restrict_admin_access
-    if !current_user || !current_user.is_admin
+    if (!current_user || !current_user.is_admin) && !masquerading?
       flash[:alert] = "You must be an administrator in order to access this page"
       redirect_to movies_path
     end
@@ -22,6 +22,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def masquerading?
+    session[:admin_id].present?
+  end
+
   helper_method :current_user
+  helper_method :masquerading?
   
 end

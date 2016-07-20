@@ -15,6 +15,12 @@
                                                   class: "btn btn-warning navbar-btn", 
                                                   role:"button" %>
         <% end %>
+        <% if masquerading? && session[:admin_id] != current_user.id %>
+          <%= link_to "Switch to Admin", user_masquerade_path(current_user, "current"),
+                                        method: :delete,
+                                        class: "btn btn-warning navbar-btn", 
+                                         role:"button" %>
+        <% end %>
         <%= link_to "Log Out", session_path("current"), 
                                                 method: :delete, 
                                                 class: "btn btn-warning navbar-btn", 

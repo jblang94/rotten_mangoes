@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :masquerades, only: [:new, :destroy]
+  end
   
   resources :movies do
     resources :reviews, only: [:new, :create]
