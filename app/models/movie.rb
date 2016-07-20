@@ -12,9 +12,19 @@ class Movie < ApplicationRecord
 
   mount_uploader :poster, PosterUploader
 
-  def self.search(title_search, director_search)
-    return Movie.all if title_search.blank? && director_search.blank?
-    Movie.where('title LIKE ? AND director LIKE ?', "%#{title_search}%", "%#{director_search}%")
+  def self.search(title_search, director_search, runtime_filter)
+    movies = Movie.where('title LIKE ? AND director LIKE ?', "%#{title_search}%", "%#{director_search}%")
+
+    case runtime_filter
+    when "Under 90 Minutes"
+      movies = movies.where('runtime_in_minutes < 90')
+    when "Between 90 and 120 Minutes"
+      movies = movies.where('runtime_in_minutes BETWEEN 90 AND 120')
+    when "Over 120 Minutes"
+      movies = movies.where('runtime_in_minutes > 120')
+    end
+
+    movies
   end
 
   def review_average

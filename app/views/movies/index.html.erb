@@ -1,20 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="column">
+  <div class="row text-center">
+    <div class="col-centered">
       <%= form_tag movies_path, method: "get" do %>
-        <%= label_tag :title_search, "Search by title:" %>
-        <%= text_field_tag :title_search, params[:title_search] %>
+        <%= text_field_tag :title_search, params[:title_search], placeholder: "Search by title...", class: "form-control" %>
         <br>
-        <%= label_tag :director_search, "Search by director:" %>
-        <%= text_field_tag :director_search, params[:director_search] %>
+        <%= text_field_tag :director_search, params[:director_search], placeholder: "Search by director", class: "form-control" %>
         <br>
-        <%= submit_tag "Search", name: nil %>
+        <%= select_tag :runtime_filter, options_for_select(["Under 90 Minutes", "Between 90 and 120 Minutes", "Over 120 Minutes"]), prompt: "Select runtime range", class: "form-control" %>
+        <br>
+        <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+        <%= link_to "Clear Search", movies_path, class: "btn btn-default" %>
       <% end %>
     </div>
   </div>
+  <hr>
   <div class="row text-center">
     <% @movies.each do |movie| %>
-      <div class="column">
+      <div class="col-md-6">
         <%= link_to image_tag(movie.poster.large.url), movie_path(movie) %>
         <h2><%= link_to movie.title, movie_path(movie) %></h2>
         <h2>Average Review: <%= movie.review_average %>/10</h2>
