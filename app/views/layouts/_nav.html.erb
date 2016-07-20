@@ -11,6 +11,9 @@
           <%= link_to "View All Users", admin_users_path, 
                                                   class: "btn btn-warning navbar-btn", 
                                                   role:"button" %>
+          <%= link_to "Create New User", new_admin_user_path, 
+                                                  class: "btn btn-warning navbar-btn", 
+                                                  role:"button" %>
         <% end %>
         <%= link_to "Log Out", session_path("current"), 
                                                 method: :delete, 

@@ -1,0 +1,47 @@
+<%= form_for [:admin, @user] do |f| %>
+
+  <% if @user.errors.any? %>
+    <div class="form-group">
+      <%= pluralize(@user.errors.count, "error") %> prevented your account from being created:
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="form-group">
+    <%= f.label :firstname, "First Name" %>
+    <br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lastname, "Last Name" %>
+    <br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="form-group">
+    <%= f.label :is_admin, "Administrator" %>
+    <%= f.check_box :is_admin %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
+
+<% end %>

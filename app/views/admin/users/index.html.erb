@@ -1,12 +1,16 @@
 <div class="container">
-  <h1>List of All Users</h1>
-  <%= paginate @users %>
+  <div class="row">
+    <h1>List of All Users</h1>
+    <%= paginate @users %>
+  </div>
 
   <% @users.each do |user| %>
     <div class="row">
       <h2><%= user.fullname %></h2>
       <p><%= user.email %></p>
       <%= link_to "View Details", admin_user_path(user) %>
+      <br>
+      <%= link_to "Edit User", edit_admin_user_path(user) %>
     </div>
   <% end %>
 </div>
