@@ -3,7 +3,6 @@ class MasqueradesController < ApplicationController
   before_filter :restrict_admin_access
 
   def new
-    session[:admin_id] = current_user.id
     user = User.find(params[:user_id])
     sign_in(user)
     redirect_to movies_path, notice: "Now logged in as #{user.fullname}"
@@ -12,7 +11,6 @@ class MasqueradesController < ApplicationController
   def destroy
     admin = User.find(session[:admin_id])
     sign_in(admin)
-    session.delete(:admin_id)
     redirect_to admin_users_path, notice: "Switched back to admin role"
   end
 
