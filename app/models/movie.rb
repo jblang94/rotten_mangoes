@@ -12,8 +12,8 @@ class Movie < ApplicationRecord
 
   mount_uploader :poster, PosterUploader
 
-  def self.search(title_search, director_search, runtime_filter)
-    movies = Movie.where('title LIKE ? AND director LIKE ?', "%#{title_search}%", "%#{director_search}%")
+  def self.search(search, runtime_filter)
+    movies = Movie.where('title LIKE :search OR director LIKE :search', search: "%#{search}%")
 
     case runtime_filter
     when "Under 90 Minutes"
