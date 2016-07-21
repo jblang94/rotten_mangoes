@@ -1,5 +1,7 @@
 <div class="col-md-6">
-  <%= link_to image_tag(movie.poster.large.url), movie_path(movie) %>
+  <% if movie.poster? %>
+    <%= link_to image_tag(movie.poster.main_page.url), movie_path(movie) %>
+  <% end %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <h2>Average Review: <%= movie.review_average %>/10</h2>
   <h3><%= formatted_date(movie.release_date) %></h3>

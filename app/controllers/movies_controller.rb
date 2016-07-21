@@ -29,6 +29,8 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
+    @movie.remove_poster! if params[:remove_poster]
+
     if @movie.update_attributes(movie_params)
       redirect_to movie_path(@movie)
     else
@@ -46,7 +48,7 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(
-      :title, :release_date, :director, :runtime_in_minutes, :poster, :description, :remove_image)
+      :title, :release_date, :director, :runtime_in_minutes, :poster, :description, :remove_poster, :remote_poster_url)
   end
 
 end
