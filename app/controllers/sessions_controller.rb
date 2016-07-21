@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      session[:admin_id] = user.id if user.is_admin 
       flash[:success] = "Welcome back, #{user.firstname}!"
       redirect_to movies_path
     else

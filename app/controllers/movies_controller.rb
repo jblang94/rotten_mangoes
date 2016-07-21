@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
     when "Over 120 Minutes"
       @movies = @movies.over_hundred_twenty_min
     end
+    @movies = @movies.order(release_date: :asc)
   end
 
   def show
