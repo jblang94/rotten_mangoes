@@ -1,31 +1,38 @@
 <div class="container">
   <div class="row">
-    <h1>List of All Users</h1>
-    <%# paginate @users %>
+    <%= paginate @users %>
   </div>
 
   <div class="row">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>First Name</th>
           <th>Last Name</th>
+          <th>First Name</th>
           <th>Email</th>
-          <th>Admin</th>
+          <th>Administrator</th>
           <th>Options</th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.firstname %></td>
             <td><%= user.lastname %></td>
+            <td><%= user.firstname %></td>
             <td><%= user.email %></td>
             <td><%= (user.is_admin) ? "Yes" : "No" %></td>
             <td>
-              <span class="glyphicon glyphicon-trash">
-                
-              </span>
+              <%= link_to edit_admin_user_path(user) do %>
+                <span class="glyphicon glyphicon-edit"></span>
+              <% end %>
+              <%= link_to admin_user_path(user), method: :delete, data: {confirm: "Delete user?"} do %>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+              <% if user.id != current_user.id && !user.is_admin %>
+                <%= link_to new_user_masquerade_path(user) do %>
+                  <span class="glyphicon glyphicon-log-in"></span>
+                <% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>

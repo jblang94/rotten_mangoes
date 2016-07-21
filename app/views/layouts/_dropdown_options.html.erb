@@ -9,7 +9,8 @@
     <li>
       <%= link_to "View All Users", admin_users_path %>
     </li> 
-  <% elsif masquerading? && session[:admin_id] != current_user.id %>
+  <% end %>
+  <% if masquerading? && current_user.id != session[:admin_id] %>
     <li>
       <%= link_to "Switch to Admin", user_masquerade_path(current_user, "current"), method: :delete %>
     </li>
