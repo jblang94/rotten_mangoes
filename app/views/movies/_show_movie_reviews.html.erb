@@ -1,7 +1,11 @@
-<h3>Reviews of <em><%= @movie.title %></em></h3>
-<% if current_user %>
-  <%= render partial: "review", collection: @movie.reviews %>
-  <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
-<% else %>
-  <p>Please <%= link_to "log in", new_session_path %> to see reviews and to add your own.</p>
-<% end %>
+<div class="row">
+  <h3>Reviews of <em><%= @movie.title %></em></h3>
+  <% if current_user %>
+    <%= link_to "Write a review!", new_movie_review_path(@movie) %>
+    <div class="column">
+      <%= render partial: "review", collection: @movie.reviews %>
+    </div>
+  <% else %>
+    <p>Please <%= link_to "log in", new_session_path %> to see reviews and to add your own.</p>
+  <% end %>
+</div>
