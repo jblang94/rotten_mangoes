@@ -6,14 +6,14 @@ class ApplicationController < ActionController::Base
 
   def restrict_admin_access
     if (!current_user || !current_user.is_admin) && !masquerading?
-      flash[:alert] = "You must be an administrator in order to access this page"
+      flash[:warning] = "You must be an administrator in order to access this page"
       redirect_to movies_path
     end
   end
 
   def restrict_access
     if !current_user
-      flash[:alert] = "You must log in."
+      flash[:warning] = "Login required"
       redirect_to new_session_path
     end
   end

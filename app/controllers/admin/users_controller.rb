@@ -17,7 +17,8 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to admin_users_path, notice: "Successfully created new user!"
+      flash[:success] = "Successfully created new user!"
+      redirect_to admin_users_path
     else
       render :new
     end
@@ -30,7 +31,8 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to admin_users_path, notice: "Successfully editied #{@user.fullname}!"
+      flash[:success] = "Successfully editied #{@user.fullname}!"
+      redirect_to admin_users_path
     else
       render :edit
     end
@@ -40,7 +42,8 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     UserMailer.deletion_email(@user).deliver_now
-    redirect_to admin_users_path, notice: "Successfully deleted #{@user.fullname}!"
+    flash[:success] = "Successfully deleted #{@user.fullname}!"
+    redirect_to admin_users_path
   end
 
   protected 

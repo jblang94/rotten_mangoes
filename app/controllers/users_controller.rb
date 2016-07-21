@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     if @user.save
       # Automatically log in the newly created user
       session[:user_id] = @user.id
-      redirect_to movies_path, notice: "Welcome #{@user.firstname}!"
+      flash[:success] = "Welcome #{@user.firstname}!"
+      redirect_to movies_path
     else
       render :new
     end
