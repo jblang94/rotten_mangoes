@@ -19,7 +19,8 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
+      flash[:success] = "#{@movie.title} was submitted successfully!"
+      redirect_to movies_path
     else
       render :new
     end
@@ -32,6 +33,7 @@ class MoviesController < ApplicationController
     @movie.remove_poster! if params[:remove_poster]
 
     if @movie.update_attributes(movie_params)
+      flash[:success] = "#{@movie.title} was updated successfully!"
       redirect_to movie_path(@movie)
     else
       render :edit
@@ -41,6 +43,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
+    flash[:success] = "#{@movie.title} was deleted!"
     redirect_to movies_path
   end
 
