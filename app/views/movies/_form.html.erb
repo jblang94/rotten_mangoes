@@ -1,4 +1,4 @@
-<h1 class="sign-up-heading">
+<h1 class="movie-form-heading">
     <%= (@movie.persisted?) ? "Edit Movie" : "Create New Movie" %>
 </h1>
 <%= form_for @movie, html: { multipart: true } do |f| %>
@@ -51,16 +51,15 @@
           <%= f.check_box :remove_poster %>
         </div>
       <% end %>
+      <div class="form-group">
+        <%= f.submit "Submit", class: "btn submit-button" %><br><br>
+        <% if @movie.persisted? %>
+          <%= link_to "Back to movie", movie_path(@movie), class:"btn submit-button" %> 
+        <% else %>
+          <%= link_to "Back to all movies", movies_path, class:"btn submit-button" %> 
+        <% end %>
+      </div>
     </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Submit", class: "btn submit-button" %>
-    <% if @movie.persisted? %>
-      <%= link_to "Back to movie", movie_path(@movie), class:"btn submit-button" %> 
-    <% else %>
-      <%= link_to "Back to all movies", movies_path, class:"btn submit-button" %> 
-    <% end %>
   </div>
 
 <% end %>

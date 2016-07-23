@@ -166,10 +166,16 @@ $posterBorderRadius: 2em;
   padding: 0.05em;
 }
 
-.sign-up-form {
+.movie-form {
   box-shadow: 0.5em 0.5em 2em black;
-  border-radius: 20%;
+  border-radius: 5%;
   background-color: black;
+}
+
+.movie-form-heading {
+  font-size: 5em;
+  color: white;
+  margin-bottom: auto;
 }
 
 .modify-movie-heading {
