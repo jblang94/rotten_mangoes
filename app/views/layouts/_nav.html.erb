@@ -1,11 +1,11 @@
-<nav class="navbar navbar-inverse">
+<nav class="rm-nav navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <strong><a class="navbar-brand" href="<%= movies_path %>">Rotten Mangoes</a></strong>
+      <strong><a class="brand-name" href="<%= movies_path %>">Rotten Mangoes</a></strong>
     </div>
     <ul class="nav navbar-nav">
       <% if current_user %>
-        <li class="dropdown">
+        <li>
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.fullname %>
           <span class="caret"></span></a>
           <%= render 'layouts/dropdown_options' %>

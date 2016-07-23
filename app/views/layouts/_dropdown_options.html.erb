@@ -1,21 +1,21 @@
 <ul class="dropdown-menu">
   <% if current_user.is_admin %>
-    <li>
+    <li class="nav-dropdown-option">
       <%= link_to "Create Movie", new_movie_path %>
     </li>
-    <li>
+    <li class="nav-dropdown-option">
       <%= link_to "Create New User", new_admin_user_path %>
     </li>
-    <li>
+    <li class="nav-dropdown-option">
       <%= link_to "View All Users", admin_users_path %>
     </li> 
   <% end %>
   <% if masquerading? && current_user.id != session[:admin_id] %>
-    <li>
+    <li class="nav-dropdown-option">
       <%= link_to "Switch to Admin", user_masquerade_path(current_user, "current"), method: :delete %>
     </li>
   <% end %>
-  <li>
+  <li class="nav-dropdown-option">
     <%= link_to "Log Out", session_path, method: :delete %>
   </li> 
 </ul>

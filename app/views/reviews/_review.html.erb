@@ -1,0 +1,10 @@
+<div class="row review">
+  <div class="review-content">
+    <% review.rating_out_of_ten.times do %>
+      <span class="glyphicon glyphicon-star review-star"></span>
+    <% end %>
+    <p class="review-text">"<%= review.text %>"</p>
+    <p class="review-user" >- <%= review.user.fullname %></p>
+  </div>
+</div>
+<br>

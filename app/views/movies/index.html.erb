@@ -2,12 +2,12 @@
   <div class="row text-center">
     <div class="col-centered">
       <%= form_tag movies_path, method: "get" do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search by title or director", class: "form-control" %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search by title or director", class: "form-control title-dir-search" %>
         <br>
-        <%= select_tag :runtime_filter, options_for_select(["Under 90 Minutes", "Between 90 and 120 Minutes", "Over 120 Minutes"]), prompt: "Select runtime range", class: "form-control" %>
+        <%= select_tag :runtime_filter, options_for_select(["Under 90 Minutes", "Between 90 and 120 Minutes", "Over 120 Minutes"]), prompt: "Select runtime range", class: "form-control runtime-filter-placeholder" %>
         <br>
-        <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-        <%= link_to "Clear Search", movies_path, class: "btn btn-default" %>
+        <%= submit_tag "Search", name: nil, class: "btn btn-default search-button" %>
+        <%= link_to "Clear Search", movies_path, class: "btn btn-default search-button" %>
       <% end %>
     </div>
   </div>
