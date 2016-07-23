@@ -1,3 +1,158 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$defaultFontFamily: 'Amatic SC';
+$navDropdownFontSize: 1.5em;
+
+* {
+  font-family: $defaultFontFamily, cursive;
+}
+
+a:hover {
+  text-decoration: none;
+  color: orange;
+}
+
+a {
+  color: green;
+}
+
+// ****** NAVIGATION BAR ****** 
+.rm-nav {
+  background-color: black;
+  box-shadow: 0.15em 0.15em 1em orange;
+}
+
+.brand-name {
+  color: white;
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 2.5em;
+  line-height: 20px; 
+}
+
+.nav>li>a {
+  color: white;
+  font-size: $navDropdownFontSize;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    color: orange;
+    background-color: black;
+}
+
+.nav-dropdown-option {
+  font-size: $navDropdownFontSize
+}
+// ************************* 
+
+// ****** SEARCH BAR ****** 
+.title-dir-search {
+  font-size: 1.75em;
+}
+
+.runtime-filter-placeholder {
+  font-size: 1.75em;
+}
+
+.search-button {
+  background-color: orange;
+  color: white;
+  font-size: 2em;
+}
+
+.search-button:hover {
+  color: green;
+}
+// *************************
+
+
+// ****** MAIN PAGE MOVIE *****
+$posterBorderRadius: 2em;
+
+.main-page-movie-title {
+  font-size: 3em;
+}
+
+.poster {
+  border-radius: $posterBorderRadius;
+  box-shadow: 0.5em 0.5em 2em black;
+}
+
+.poster:hover {
+  opacity: 0.7;
+}
+
+// ************************* 
+
+// ****** SHOW MOVIE PAGE *****
+
+.movie-header {
+  float: left;
+  color: orange;
+}
+
+.redirect-link {
+  font-size: 2em;
+  margin-right: 0.5em;
+}
+
+.review {
+  margin-left: 0.5em;
+  box-shadow: 0.5em 0.5em 0.75em black;
+}
+
+.review:hover {
+  background-color: orange;
+  opacity: 0.7;
+  color: white;
+}
+
+.review-content {
+  margin-left: 0.5em;
+}
+
+.review-text {
+  font-size: 3em;
+  margin: auto;
+}
+
+.review-user {
+  margin: auto;
+  font-size: 1.5em;
+}
+
+.review-star {
+  font-size: 1.25em;
+}
+
+.show-movie-title {
+  margin: auto;
+  font-size: 7em;
+}
+
+.show-movie-details {
+  font-size: 3em;
+  margin: auto;
+}
+
+.show-movie-description {
+  font-size: 2em;
+  line-height: 1.5;
+}
+
+.divider {
+  border-color: orange;
+}
+
+// ************************* 
+
+
+// ****** MOVIE FORM ****** 
+.poster-file-upload {
+  margin: auto;
+}
+// ************************* 

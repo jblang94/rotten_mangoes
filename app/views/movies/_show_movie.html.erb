@@ -1,9 +1,50 @@
-<%= link_to image_tag(@movie.poster.large.url), movie_path(@movie) %>
-<h3><%= formatted_date(@movie.release_date) %></h3>
-<h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
-<% if current_user && current_user.is_admin %>
-  <h2>
-  (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, data: {confirm: "You sure?"} %>)
-  </h2>
+<div class="col-md-4 text-center">
+  <%= image_tag @movie.poster.large.url, class: "poster" %>
+  <br>
+  <% if current_user && current_user.is_admin %>
+    <span class="glyphicon glyphicon-pencil edit-movie-option"></span>
+  <% end %>
+</div>
+
+<div class="col-md-8">
+  <div class="row">
+    <div class="column">
+      <div class="movie-header">
+          <h1 class="show-movie-title">
+          <%= @movie.title %>
+        </h1>
+        <h3 class="show-movie-details">
+          <%= @movie.director %>
+          <br>
+          <%= formatted_date(@movie.release_date) %>
+        </h3>
+      </div>
+      <% if @movie.description %>
+        <article class="show-movie-description">
+          <%= @movie.description %>
+        </article>
+      <% end %>
+    </div>
+  </div>
+
+<hr class="divider">
+
+<div class="row text-center">
+  <%= link_to movies_path do %>
+    <span class="glyphicon glyphicon-home redirect-link"></span>
+  <% end %>
+  <%= link_to new_movie_review_path(@movie) do %>
+    <span class="glyphicon glyphicon-edit redirect-link"></span>
+  <% end %>
+</div>
+
+<% if @movie.reviews %>
+  <% @movie.reviews.each do |review| %>
+    <div class="row">
+      <div class="container-fluid">
+        <%= render review %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
-<p><%= @movie.description %></p>
+

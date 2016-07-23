@@ -35,11 +35,15 @@ class PosterUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :large do
-    process :resize_to_fit => [700, 700]
+    process :resize_to_fit => [500, 500]
   end
 
   version :main_page do
-    process :resize_to_fit => [500, 500]
+    process :resize_to_fit => [400, 400]
+  end
+
+  version :thumb do
+    process :resize_to_fit => [100, 100]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
