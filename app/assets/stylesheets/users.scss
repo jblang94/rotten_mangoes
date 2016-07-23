@@ -1,3 +1,34 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sign-up-form {
+  box-shadow: 0.5em 0.5em 2em black;
+  border-radius: 20%;
+  background-color: black;
+}
+
+.sign-up-heading {
+  font-size: 5em;
+  color: white;
+}
+
+.sign-up-button {
+  background-color: orange;
+  color: white;
+  font-size: 2em;
+}
+
+.sign-up-button:hover {
+  background-color: white;
+  color: green;
+}
+
+
+.rm-text-field {
+  font-size: 1.5em;
+}
+
+.restrict-non-user-msg {
+  font-size: 1.5em;
+}

@@ -1,0 +1,25 @@
+<div class="col-md-4 col-md-offset-4 sign-up-form">
+  <h1 class="sign-up-heading">
+    <%= (@review.persisted?) ? "Edit Review" : "Create Review" %>
+  </h1>
+  <%= form_for [@movie, @review] do |f| %>
+    <% if @review.errors.any? %>
+      <div class="form-group">
+        <% @review.errors.full_messages.each do |message| %>
+          <p class="error"><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+        <%= f.text_area :text, class:"form-control rm-text-field", placeholder: "Review..." %>
+      </div>
+    <div class="form-group">
+      <%= f.number_field :rating_out_of_ten, class:"form-control rm-text-field", placeholder: "Rating Out Of 10" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn submit-button" %>
+      <%= link_to "Back to movie", movie_path(@movie), class: "btn submit-button" %>
+    </div>
+  <% end %>
+</div>

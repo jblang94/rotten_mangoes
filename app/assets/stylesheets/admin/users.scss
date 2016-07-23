@@ -1,3 +1,33 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ****** USER FORM ********
+.administrator-form-label {
+  color: white;
+  font-size: 1.5em;
+}
+// *************************
+
+// ****** USERS TABLE ********
+.user-table {
+  background-color: black;
+  color: white;
+}
+.table-headers {
+  font-size: 3em;
+}
+
+.table-entries {
+  font-size: 2em;
+}
+
+.table-entries tr:hover {
+  background-color: orange;
+  color: black;
+}
+
+.rm-paging {
+  font-size: 3em;
+}
+// *************************

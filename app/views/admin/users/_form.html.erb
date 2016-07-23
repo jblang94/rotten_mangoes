@@ -1,47 +1,38 @@
-<%= form_for [:admin, @user] do |f| %>
-
-  <% if @user.errors.any? %>
-    <div class="form-group">
-      <%= pluralize(@user.errors.count, "error") %> prevented your account from being created:
-      <ul>
+<div class="col-md-4 col-md-offset-4 sign-up-form">
+  <h1 class="sign-up-heading">
+    <%= (@user.persisted?) ? "Edit User" : "Create New User" %>
+  </h1>
+  <%= form_for [:admin, @user] do |f| %>
+    <% if @user.errors.any? %>
+      <div class="form-group">
         <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <p class="error"><%= message %></p>
         <% end %>
-      </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.text_field :firstname, class: "form-control rm-text-field", placeholder: "First Name" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :lastname, class: "form-control rm-text-field", placeholder: "Last Name" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :email, class: "form-control rm-text-field", placeholder: "Email" %>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password, class: "form-control rm-text-field", placeholder: "Password"%>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, class: "form-control rm-text-field", placeholder: "Confirm Password" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :is_admin, "Administrator", class: "administrator-form-label" %>
+      <%= f.check_box :is_admin %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn sign-up-button" %>
+      <%= link_to "Back To All Users", admin_users_path, class: "btn sign-up-button" %>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :email %>
-    <br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="form-group">
-    <%= f.label :firstname, "First Name" %>
-    <br>
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="form-group">
-    <%= f.label :lastname, "Last Name" %>
-    <br>
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="form-group">
-    <%= f.label :password %>
-    <br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="form-group">
-    <%= f.label :is_admin, "Administrator" %>
-    <%= f.check_box :is_admin %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "Submit", class: "btn btn-default" %>
-  </div>
-
-<% end %>
+</div>

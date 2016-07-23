@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
+  
   def create
     user = User.find_by(email: params[:email])
 
@@ -10,8 +8,8 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome back, #{user.firstname}!"
       redirect_to movies_path
     else
-      flash.now[:danger] = "Login failed..."
-      render :new
+      flash[:danger] = "Login failed..."
+      redirect_to movies_path
     end
   end
 

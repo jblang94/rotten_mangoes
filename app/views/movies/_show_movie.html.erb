@@ -1,8 +1,13 @@
 <div class="col-md-4 text-center">
   <%= image_tag @movie.poster.large.url, class: "poster" %>
-  <br>
   <% if current_user && current_user.is_admin %>
-    <span class="glyphicon glyphicon-pencil edit-movie-option"></span>
+    <br>
+    <%= link_to edit_movie_path(@movie) do %>
+      <span class="glyphicon glyphicon-pencil movie-option"></span>
+    <% end %>
+    <%= link_to movie_path(@movie), method: :delete, data: {confirm: "Delete movie?"} do %>
+      <span class="glyphicon glyphicon-trash movie-option"></span>
+    <% end %>
   <% end %>
 </div>
 
@@ -10,7 +15,7 @@
   <div class="row">
     <div class="column">
       <div class="movie-header">
-          <h1 class="show-movie-title">
+        <h1 class="show-movie-title">
           <%= @movie.title %>
         </h1>
         <h3 class="show-movie-details">
@@ -30,21 +35,24 @@
 <hr class="divider">
 
 <div class="row text-center">
-  <%= link_to movies_path do %>
-    <span class="glyphicon glyphicon-home redirect-link"></span>
-  <% end %>
-  <%= link_to new_movie_review_path(@movie) do %>
-    <span class="glyphicon glyphicon-edit redirect-link"></span>
+  <% if current_user %>
+    <%= link_to movies_path do %>
+      <span class="glyphicon glyphicon-home redirect-link"></span>
+    <% end %>
+    <%= link_to new_movie_review_path(@movie) do %>
+      <span class="glyphicon glyphicon-edit redirect-link"></span>
+    <% end %>
+    <% if @movie.reviews %>
+      <% @movie.reviews.each do |review| %>
+        <div class="row text-left">
+          <div class="container-fluid">
+            <%= render review %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p class="restrict-non-user-msg">Please login or <%= link_to "sign up", new_user_path %> to see and post reviews</p>
   <% end %>
 </div>
-
-<% if @movie.reviews %>
-  <% @movie.reviews.each do |review| %>
-    <div class="row">
-      <div class="container-fluid">
-        <%= render review %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
 

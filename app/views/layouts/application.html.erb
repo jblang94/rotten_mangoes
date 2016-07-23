@@ -14,13 +14,13 @@
   <body>
     <%= render 'layouts/nav' %>
     <% if masquerading? %>
-      <div class="alert alert-info"> 
-        Masquerading as <%= current_user.fullname %>
+      <div class="alert alert-info text-center"> 
+        <p class="alert-text">Masquerading as <%= current_user.fullname %></p>
       </div>
     <% end %>
     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <%= value %>
+      <div class="alert alert-<%= key %> text-center">
+        <p class="alert-text"><%= value %></p>
       </div>
     <% end %>
     <%= yield %>

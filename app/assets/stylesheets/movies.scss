@@ -90,6 +90,10 @@ $posterBorderRadius: 2em;
 
 // ****** SHOW MOVIE PAGE *****
 
+.movie-option {
+  margin-top: 1em;
+  font-size: 2em;
+}
 .movie-header {
   float: left;
   color: orange;
@@ -131,7 +135,7 @@ $posterBorderRadius: 2em;
 
 .show-movie-title {
   margin: auto;
-  font-size: 7em;
+  font-size: 7.5em;
 }
 
 .show-movie-details {
@@ -140,7 +144,7 @@ $posterBorderRadius: 2em;
 }
 
 .show-movie-description {
-  font-size: 2em;
+  font-size: 1.75em;
   line-height: 1.5;
 }
 
@@ -152,7 +156,40 @@ $posterBorderRadius: 2em;
 
 
 // ****** MOVIE FORM ****** 
+
+.error {
+  font-size: 1.5em;
+  color: orange;
+}
 .poster-file-upload {
   margin: auto;
+  padding: 0.05em;
+}
+
+.sign-up-form {
+  box-shadow: 0.5em 0.5em 2em black;
+  border-radius: 20%;
+  background-color: black;
+}
+
+.modify-movie-heading {
+  font-size: 5em;
+  color: white;
+}
+
+.modify-movie-label {
+  color: white;
+  font-size: 2.25em;
+}
+
+.submit-button {
+  background-color: orange;
+  color: white;
+  font-size: 2em;
+}
+
+.submit-button:hover {
+  background-color: white;
+  color: green;
 }
 // ************************* 
